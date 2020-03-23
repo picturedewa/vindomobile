@@ -64,33 +64,3 @@ $route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/
 $route['banner/new']['post'] = 'api/banner/insertbanner';
 $route['banner/del']['post'] = 'api/banner/deletebanner';
 
-$route['product/new']['post'] = 'api/product/insertproduct';
-$route['product/del']['post'] = 'api/product/deleteproduct';
-
-$route['kategori/new']['post'] = 'api/kategori/insertcate';
-$route['kategori/del']['post'] = 'api/kategori/deletecate';
-$route['kategori/edit']['post'] = 'api/kategori/editcate';
-
-$route['promo/new']['post'] = 'api/promo/insertpromo'; 
-$route['promo/del']['post'] = 'api/promo/deletepromo';
-$route['promo/edit']['post'] = 'api/promo/editpromo';
-
-$route['about/savemap']['post'] = 'api/about/savemap';
-$route['market/save']['post'] = 'api/marketplace/inputmarket';
-$route['market/delmarket']['post'] = 'api/marketplace/deletemarketplace';
-$route['market/edit']['post'] = 'api/marketplace/editmarket';
-
-$route['hadiah/save']['post'] = 'api/hadiah/insertgiveway';
-$route['hadiah/edit']['post'] = 'api/hadiah/updategiveway';
-$route['hadiah/del']['post'] = 'api/hadiah/deletehadiah';
-
-$route['sosmed/save']['post'] = 'api/sosmed/inputmarket';
-$route['sosmed/delmarket']['post'] = 'api/sosmed/deletemarketplace';
-$route['sosmed/edit']['post'] = 'api/sosmed/editmarket';
-
-$route['store/save']['post'] = 'api/store/insertstore';
-$route['store/edit']['post'] = 'api/store/editstore';
-$route['store/del']['post'] = 'api/store/deletestore'; 
-
-$route['others/save']['post'] = 'api/others/insertvch';
-$route['others/del']['post'] = 'api/others/delvoucher';

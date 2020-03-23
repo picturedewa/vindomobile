@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $config["api_projectid"] = "Your_api";
 // $config['api_firebase'] = "Your_api_key";
 
-$config['base_url'] = BASEURL;
+$config['base_url'] = "http://vindotextile.com/vindomobile/";
 $config["api_projectid"] = "1047787632235";
 $config['api_firebase'] = "AAAA8_UCdms:APA91bElPcaLjTQETXm8G0bvBiX31m4EZtIyGbpvfLi7ZkVOfcOO7yEdZinJ8jSenGsuCrD5BAw2ibOJxQqXGf96VekJGBLsefa1vCipB4QCQMEJSnrk3x3Ya1txSoBcy5IOXnYDTKkt";
 
@@ -42,7 +42,7 @@ $config['api_firebase'] = "AAAA8_UCdms:APA91bElPcaLjTQETXm8G0bvBiX31m4EZtIyGbpvf
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
