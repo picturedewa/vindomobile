@@ -1,2 +1,0 @@
-# vindomobile
-program untuk vindotextile 
