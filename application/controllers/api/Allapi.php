@@ -109,6 +109,26 @@ class Allapi extends REST_Controller {
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 
+    public function getdatasubgoldetailstock_post(){
+        $idsubgol = $this->post("subgol");
+        if ($idsubgol){
+            $omsetData = $this->Mallapi->getsubgoldetailstock($idsubgol);
+            if (count($omsetData) == 0) {
+                $jadwal["message"] = "Data Penjualan tidak ditemukan";
+                $jadwal["success"] = 0;
+            }else{
+                $jadwal["success"] = 1;
+                $jadwal["message"] = "success show list all Data";
+            }
+        }else{
+            $jadwal["message"] = "Sub Golongan Tidak ditemukan";
+            $jadwal["success"] = 0;
+        }
+        
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
 
     public function getlistsubgoltotal_post(){
         $omsetData = $this->Mallapi->getAlltotalsubgol();

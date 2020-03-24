@@ -84,4 +84,14 @@ class ApiModel extends CI_Model
     return $query->result();
   }
 
+  public function getsubgoldetailstock($subdata){
+    $this->db->select('A.kodepro,A.sisa,C.namapro,B.hrata,(A.sisa * B.hrata) AS nilai');
+    $this->db->from("{$this->stc} A");
+    $this->db->join("{$this->avg} B", 'A.kodepro = B.kodepro');
+    $this->db->join("{$this->product} C", 'A.kodepro = C.kodepro');
+    $this->db->where('C.subgol', $subdata);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
 }
