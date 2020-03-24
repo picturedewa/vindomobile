@@ -57,7 +57,7 @@ class ApiModel extends CI_Model
   }
 
   public function getAllstocktotal(){
-    $this->db->select('(stock.sisa * hrata.hrata) as ttlstc');
+    $this->db->select('SUM(stock.sisa * hrata.hrata) as ttlstc');
     $this->db->from("{$this->stc} A");
     $this->db->join("{$this->avg} B", 'A.kodepro = B.kodepro');
     $query = $this->db->get();
