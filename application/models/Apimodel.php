@@ -21,7 +21,7 @@ class ApiModel extends CI_Model
         $bulan = date('m');
         $tahun = date('Y');
       }
-    $this->db->select('A.noso,A.tgl,A.grandtotal,A.ttlhpp,A.grandtotal-A.ttlhpp AS rl');
+    $this->db->select('A.noso,A.tgl,A.grandtotal,A.ttlhpp,(grandtotal - ttlhpp) AS rl');
     $this->db->from("{$this->soh} A");
     $this->db->where('YEAR(A.tgl)', $tahun);
     $this->db->where('MONTH(A.tgl)', $bulan);
