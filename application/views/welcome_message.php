@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Rexuszone</title>
+    <title>Vindotextile-Bangka</title>
 </head>
 <body>
 
