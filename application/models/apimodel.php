@@ -16,13 +16,13 @@ class ApiModel extends CI_Model
     if($idtgl){
         $time = strtotime($idtgl);
         $bulan = date('m', $time);
-        $tahun=date('Y',$time);
+        $tahun = date('Y', $time);
       }else{
-        $bulan=date('m');
-        $tahun=date('Y');
+        $bulan = date('m');
+        $tahun = date('Y');
       }
     $this->db->select('A.noso,A.tgl,A.grandtotal,A.ttlhpp,A.grandtotal-A.ttlhpp AS rl');
-    $this->db->from("{$this->so_h} A");
+    $this->db->from("{$this->soh} A");
     $this->db->where('YEAR(A.tgl)', $tahun);
     $this->db->where('MONTH(A.tgl)', $bulan);
     $query = $this->db->get();
