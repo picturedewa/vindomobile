@@ -35,9 +35,24 @@ class Allapi extends REST_Controller {
         $this->load->model("Apimodel","Mallapi");
     }
 
-    public function getdataomset_post(){
+    public function getdataomsetdetail_post(){
         $idtgl = $this->post("idtgl");
-        $omsetData = $this->Mallapi->getAllomset($idtgl);
+        $omsetData = $this->Mallapi->getAllomsetdetail($idtgl);
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data Omset tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
+    public function getdataomsettotal_post(){
+        $idtgl = $this->post("idtgl");
+        $omsetData = $this->Mallapi->getAllomsettotal($idtgl);
         if (count($omsetData) == 0) {
             $jadwal["message"] = "Data Omset tidak ditemukan";
             $jadwal["success"] = 0;
