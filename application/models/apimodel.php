@@ -16,7 +16,7 @@ class ApiModel extends CI_Model
     if($idtgl){
         $time = strtotime($idtgl);
         $bulan = date('m', $time);
-        $tahun=date('Y',$time)
+        $tahun=date('Y',$time);
       }else{
         $bulan=date('m');
         $tahun=date('Y');
