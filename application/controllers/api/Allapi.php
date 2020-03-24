@@ -46,7 +46,7 @@ class Allapi extends REST_Controller {
             $jadwal["message"] = "success show list all Data";
         }
            
-        $jadwal["data"] = $jadwalData;
+        $jadwal["data"] = $omsetData;
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 }
