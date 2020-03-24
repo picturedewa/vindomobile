@@ -46,7 +46,7 @@ class ApiModel extends CI_Model
     return $query->result();
   }
 
-  public function getdatajualdetail($idso){
+  public function getjualdetail($idso){
     $this->db->select('A.noso,A.kodebrg,A.namabrg,A.qty,A.unit,A.price,A.total');
     $this->db->from("{$this->sod} A");
     $this->db->where('A.noso', $idso);
