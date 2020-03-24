@@ -94,4 +94,18 @@ class Allapi extends REST_Controller {
         $jadwal["data"] = $omsetData;
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
+
+    public function getdetalstock_post(){
+        $omsetData = $this->Mallapi->getAlldetailstock();
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data Omset tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
 }
