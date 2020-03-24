@@ -28,9 +28,9 @@ class Allapi extends REST_Controller {
 
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
-        $this->methods['users_get']['limit'] = 500; // 500 requests per hour per user/key
-        $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
-        $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
+        // $this->methods['users_get']['limit'] = 500; // 500 requests per hour per user/key
+        // $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
+        // $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
 
         $this->load->model("Apimodel","Mallapi");
     }
@@ -84,7 +84,7 @@ class Allapi extends REST_Controller {
         
         $omsetData = $this->Mallapi->getAllstocktotal();
         if (count($omsetData) == 0) {
-            $jadwal["message"] = "Data Omset tidak ditemukan";
+            $jadwal["message"] = "Data stock tidak ditemukan";
             $jadwal["success"] = 0;
         }else{
             $jadwal["success"] = 1;
@@ -98,7 +98,22 @@ class Allapi extends REST_Controller {
     public function getdetalstock_post(){
         $omsetData = $this->Mallapi->getAlldetailstock();
         if (count($omsetData) == 0) {
-            $jadwal["message"] = "Data Omset tidak ditemukan";
+            $jadwal["message"] = "Data stock tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
+
+    public function getlistsubgoltotal_post(){
+        $omsetData = $this->Mallapi->getAlltotalsubgol();
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data sub gol tidak ditemukan";
             $jadwal["success"] = 0;
         }else{
             $jadwal["success"] = 1;

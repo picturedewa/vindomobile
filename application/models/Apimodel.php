@@ -74,4 +74,14 @@ class ApiModel extends CI_Model
     return $query->result();
   }
 
+  public function getAlltotalsubgol(){
+    $this->db->select('C.subgol,SUM(A.sisa * B.hrata) AS nilai');
+    $this->db->from("{$this->stc} A");
+    $this->db->join("{$this->avg} B", 'A.kodepro = B.kodepro');
+    $this->db->join("{$this->product} C", 'A.kodepro = C.kodepro');
+    $this->db->group_by(array("subgol"));
+    $query = $this->db->get();
+    return $query->result();
+  }
+
 }
