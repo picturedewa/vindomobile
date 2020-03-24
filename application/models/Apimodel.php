@@ -5,6 +5,8 @@ class ApiModel extends CI_Model
 {
   public $soh = 'so_h';
   public $sod = 'so_d';
+  public $stc = 'stock';
+  public $avg = 'hrata';
 
   public function __construct()
   {
@@ -50,6 +52,14 @@ class ApiModel extends CI_Model
     $this->db->select('A.noso,A.kodebrg,A.namabrg,A.qty,A.unit,A.price,A.total');
     $this->db->from("{$this->sod} A");
     $this->db->where('A.noso', $idso);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function getAllstocktotal(){
+    $this->db->select('(stock.sisa * hrata.hrata) as ttlstc');
+    $this->db->from("{$this->stc} A");
+    $this->db->join("{$this->avg} B", 'A.kodepro = B.kodepro');
     $query = $this->db->get();
     return $query->result();
   }
