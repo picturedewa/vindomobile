@@ -156,4 +156,15 @@ class ApiModel extends CI_Model
     }
     
    }
+
+   public function getAlldatapembelian($dataqr)
+   {
+    $this->db->select($dataqr);
+    $this->db->from("{$this->poh}");
+    $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
+    $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodespl');
+    $this->db->group_by(array($dataqr));
+    $query = $this->db->get();
+    return $query->result();
+   }
 }
