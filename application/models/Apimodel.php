@@ -150,5 +150,5 @@ class ApiModel extends CI_Model
   //     return $this->db->update($this->prod,$data);
   //   }
     
-  // }
+   }
 }
