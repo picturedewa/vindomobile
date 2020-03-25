@@ -160,7 +160,7 @@ class ApiModel extends CI_Model
 
    public function getAlldatapembelian($dataqr)
    {
-    $this->db->select($dataqr);
+    $this->db->select($dataqr .'as item');
     $this->db->from("{$this->poh}");
     $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
