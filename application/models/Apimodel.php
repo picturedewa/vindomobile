@@ -102,10 +102,7 @@ class ApiModel extends CI_Model
 
 
   public function updateoepnedit($idno,$idmodule,$idevent){
-           echo "<pre>";
-            print_r($idevent);
-            print_r($idmodule);
-            echo "<pre>";
+
     if ($idevent) = "1" {
         $data = array( 
           'ocedit'      => $_POST[$idevent] ,  
