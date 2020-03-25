@@ -9,6 +9,7 @@ class ApiModel extends CI_Model
   public $avg = 'hrata';
   public $product = 'product';
   public $poh = 'po_h';
+  public $pod = 'po_d';
   public $retjualh = 'retjual_h';
   public $retbelih = 'retbeli_h';
   public $lnssplh = 'lnsspl_h';
