@@ -102,49 +102,49 @@ class ApiModel extends CI_Model
 
 
   public function updateoepnedit($idno,$idmodule,$idevent){
-    if ($idevent) == 1 {
+    if ($idevent) = 1 {
         $data = array( 
           'ocedit'      => $_POST[$idevent] ,  
         );
     }
-    if ($idevent) == 2 {
+    if ($idevent) = 2 {
         $data = array( 
           'ocdel'      => $_POST[$idevent] ,  
         );
     }
     
 
-    if($idmodule) =="inv" {
+    if($idmodule) ="inv" {
       $this->db->where('noso', $idno);
       return $this->db->update($this->soh,$data);
     }
     
-    if($idmodule) =="po" {
+    if($idmodule) ="po" {
       $this->db->where('nopo', $idno);
       return $this->db->update($this->poh,$data);
     }
 
-    if($idmodule) =="retjual" {
+    if($idmodule) ="retjual" {
       $this->db->where('noret', $idno);
       return $this->db->update($this->retjualh,$data);
     }
 
-    if($idmodule) =="retbeli" {
+    if($idmodule) ="retbeli" {
       $this->db->where('noret', $idno);
       return $this->db->update($this->retbelih,$data);
     }
 
-    if($idmodule) =="lnsspl" {
+    if($idmodule) ="lnsspl" {
       $this->db->where('nobyr', $idno);
       return $this->db->update($this->lnsspl,$data);
     }
 
-    if($idmodule) =="spl" {
+    if($idmodule) ="spl" {
       $this->db->where('kodecst', $idno);
       return $this->db->update($this->spl,$data);
     }
 
-    if($idmodule) =="prod" {
+    if($idmodule) ="prod" {
       $this->db->where('kodepro', $idno);
       return $this->db->update($this->prod,$data);
     }
