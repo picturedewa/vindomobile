@@ -105,12 +105,12 @@ class ApiModel extends CI_Model
    
     if ($idevent == "1") {
         $data = array( 
-          'ocedit'=> $_POST[$idevent] ,  
+          'ocedit'=> $_POST[$idevent]
         );
     }
     if ($idevent == "2") {
         $data = array( 
-          'ocdel'=> $_POST[$idevent] ,  
+          'ocdel'=> $_POST[$idevent]
         );
     }
     
