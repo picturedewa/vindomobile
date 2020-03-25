@@ -155,7 +155,7 @@ class Allapi extends REST_Controller {
         // print_r($idmodule);
         // echo "<pre>";
         $omsetData = $this->Mallapi->updateoepnedit($idno,$idmodule,$idevent);
-        if (count($omsetData) == 0) {
+        if ($omsetData) {
             $jadwal["message"] = "Data sub gol tidak ditemukan";
             $jadwal["success"] = 0;
         }else{
