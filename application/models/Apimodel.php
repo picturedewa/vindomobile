@@ -113,7 +113,12 @@ class ApiModel extends CI_Model
           'ocdel'=> "1"
         );
     }
-    
+    if ($idevent == 3) {
+      $data = array( 
+        'ocdel'=> "0",
+        'ocedit'=> "1"
+      );
+  }
 
     if($idmodule == "inv") {
       $this->db->where('noso', $idno);
