@@ -181,7 +181,7 @@ class ApiModel extends CI_Model
     $this->db->from("{$this->poh}");
     $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
-    $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    $this->db->where('po_h.tgl BEETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     $this->db->where($datafield, '%"'.$datacari.'"%');
     $query = $this->db->get();
     return $query->result();
