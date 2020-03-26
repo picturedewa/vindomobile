@@ -158,14 +158,17 @@ class ApiModel extends CI_Model
     
    }
 
-   public function getAlldatapembelian($dataqr,$thn,$bln)
+   public function getAlldatapembelian($dataqr,$tgl)
    {
+    // $first_day_this_month = date('m-01-Y',$tgl); // hard-coded '01' for first day
+    // $last_day_this_month  = date('m-t-Y',$tgl);
     $this->db->select($dataqr .' as item');
     $this->db->from("{$this->poh}");
     $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
-    $this->db->where('YEAR(po_h.tgl)', $thn);
-    $this->db->where('MONTH(po_h.tgl)', $bln);
+    $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    // $this->db->where('YEAR(po_h.tgl)', $thn);
+    // $this->db->where('MONTH(po_h.tgl)', $bln);
     $this->db->group_by(array($dataqr));
     $query = $this->db->get();
     return $query->result();

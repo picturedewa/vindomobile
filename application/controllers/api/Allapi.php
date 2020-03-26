@@ -171,9 +171,9 @@ class Allapi extends REST_Controller {
 
     public function getdatapembelian_post(){
         $dataqr = $this->post("dataquery");
-        $thn=$this->post("tahun");
-        $bln=$this->post("bulan");
-        $omsetData = $this->Mallapi->getAlldatapembelian($dataqr,$thn,$bln);
+        $thn=$this->post("tgl");
+        // $bln=$this->post("bulan");
+        $omsetData = $this->Mallapi->getAlldatapembelian($dataqr,$tgl);
         if (count($omsetData) == 0) {
             $jadwal["message"] = "Data sub gol tidak ditemukan";
             $jadwal["success"] = 0;
