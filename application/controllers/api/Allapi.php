@@ -169,7 +169,7 @@ class Allapi extends REST_Controller {
     }
 
 
-    public function getdatapembelian_post(){
+    public function getdatapembelian_post(){  //pencarian berdasarkan filter field
         $dataqr = $this->post("dataquery");
         $tgl=$this->post("tgl");
         // $bln=$this->post("bulan");
@@ -186,12 +186,29 @@ class Allapi extends REST_Controller {
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 
-    public function getpembeliandetail_post(){
+
+    public function getpembelianheader_post(){
         $datafield = $this->post("datafield");
         $tgl=$this->post("tgl");
         $datacari = $this->post("datacari");
         // $bln=$this->post("bulan");
-        $omsetData = $this->Mallapi->getAlldatabelidetail($datafield,$tgl,$datacari);
+        $omsetData = $this->Mallapi->getAlldatabeliheader($datafield,$tgl,$datacari);
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data sub gol tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
+    public function getpembeliandetail_post(){ 
+        $datapo = $this->post("datapo");
+        // $bln=$this->post("bulan");
+        $omsetData = $this->Mallapi->getAlldatabelidetail($datapo);
         if (count($omsetData) == 0) {
             $jadwal["message"] = "Data sub gol tidak ditemukan";
             $jadwal["success"] = 0;

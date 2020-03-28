@@ -174,7 +174,7 @@ class ApiModel extends CI_Model
     return $query->result();
    }
 
-   public function getAlldatabelidetail($datafield,$tgl,$datacari){
+   public function getAlldatabelidetail($datapo){
     // $first_day_this_month = date('m-01-Y',$tgl); // hard-coded '01' for first day
     // $last_day_this_month  = date('m-t-Y',$tgl);
     $this->db->select('po_h.nopo,po_h.grandtotal,Supplier.perusahaan,po_h.tgl,po_d.kodepro,po_d.namapro,po_d.qty,po_d.unit,po_d.price,po_d.total');
@@ -182,8 +182,19 @@ class ApiModel extends CI_Model
     $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    // $this->db->like($datafield,$datacari,'both');
+    $this->db->where('po_h.nopo', $datapo);
+    $query = $this->db->get();
+    return $query->result();
+   }
+
+   public function getAlldatabeliheader($datafield,$tgl,$datacari){
+    $this->db->select('po_h.nopo,po_h.grandtotal,Supplier.perusahaan,po_h.tgl');
+    $this->db->from("{$this->poh}");
+    $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     $this->db->like($datafield,$datacari,'both');
     $query = $this->db->get();
     return $query->result();
    }
+
 }
