@@ -305,4 +305,26 @@ class ApiModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
    }
+
+   public function getAlldatarugilabadetail($datapo){
+    // $first_day_this_month = date('m-01-Y',$tgl); // hard-coded '01' for first day
+    // $last_day_this_month  = date('m-t-Y',$tgl);
+    $this->db->select('so_d.kodebrg,so_d.namabrg,so_d.qty,so_d.unit,so_d.price,so_d.total,so_d.hpp');
+    $this->db->from("{$this->sod}");
+    //$this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
+    //$this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
+    //$this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    // $this->db->like($datafield,$datacari,'both');
+    $this->db->where('so_d.noso', $datapo);
+    $query = $this->db->get();
+    return $query->result();
+   }
+
+   public function getAlldatarugilabadetailheader($datapo){
+    $this->db->select('so_h.noso,so_h.tgl,so_h.grandtotal,so_h.sales as perusahaan');
+    $this->db->from("{$this->soh}");
+    $this->db->where('so_h.noso', $datapo);
+    $query = $this->db->get();
+    return $query->result();
+   }
 }
