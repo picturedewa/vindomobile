@@ -299,7 +299,7 @@ class ApiModel extends CI_Model
    }
 
    public function getAlldatarugilaba($tgl){
-    $this->db->select('so_h.noso,so_h.grandtotal,(total-ttlhpp) AS rl');
+    $this->db->select('so_h.noso,so_h.grandtotal,so_h.tgl,(total-ttlhpp) AS rl');
     $this->db->from("{$this->soh}");
     $this->db->where('so_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     $query = $this->db->get();
