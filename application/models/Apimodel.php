@@ -223,7 +223,9 @@ class ApiModel extends CI_Model
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     // $this->db->like($datafield,$datacari,'both');
     // $this->db->group_by(array("po_h.nopo"));
-    $this->db->where($datafield, $datacari);
+    if($datafield){
+      $this->db->where($datafield, $datacari);
+    }
     $query = $this->db->get();
     return $query->result();
    }
