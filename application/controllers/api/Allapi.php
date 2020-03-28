@@ -225,4 +225,20 @@ class Allapi extends REST_Controller {
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 
+    public function getdatapenjualan_post(){
+        $dataqr = $this->post("dataquery");
+        $tgl=$this->post("tgl");
+        // $bln=$this->post("bulan");
+        $omsetData = $this->Mallapi->getAlldatapenjualan($dataqr,$tgl);
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data sub gol tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
 }

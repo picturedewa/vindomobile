@@ -224,4 +224,17 @@ class ApiModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
    }
+
+   public function getAlldatapenjualan($dataqr,$tgl)
+   {
+    
+    $this->db->select($dataqr .' as item');
+    $this->db->from("{$this->soh}");
+    $this->db->join("{$this->sod}", 'so_h.noso = so_d.noso');
+    $this->db->where('so_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    // $this->db->where('YEAR(po_h.tgl)', $thn);
+    // $this->db->where('MONTH(po_h.tgl)', $bln);
+    $this->db->group_by(array($dataqr));
+    $query = $this->db->get();
+    return $query->result();
 }
