@@ -189,7 +189,7 @@ class ApiModel extends CI_Model
    }
 
    public function getAlldatabelidetailheader($datapo){
-    $this->db->select('po_h.nopo,po_h.tgl,po_h.grandtotal,Supplier,perusahaan');
+    $this->db->select('po_h.nopo,po_h.tgl,po_h.grandtotal,Supplier.perusahaan');
     $this->db->from("{$this->poh}");
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     //$this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
