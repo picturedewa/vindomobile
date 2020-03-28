@@ -199,4 +199,14 @@ class ApiModel extends CI_Model
     return $query->result();
    }
 
+   public function getAlldatabeliheadertotal($datafield,$tgl,$datacari){
+    $this->db->select('sum(po_h.grandtotal) as gtotal');
+    $this->db->from("{$this->poh}");
+    $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
+    $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
+    $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    $this->db->like($datafield,$datacari,'both');
+    $query = $this->db->get();
+    return $query->result();
+   }
 }

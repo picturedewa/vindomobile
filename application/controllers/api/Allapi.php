@@ -193,6 +193,7 @@ class Allapi extends REST_Controller {
         $datacari = $this->post("datacari");
         // $bln=$this->post("bulan");
         $omsetData = $this->Mallapi->getAlldatabeliheader($datafield,$tgl,$datacari);
+        $omsettotal= $this->Mallapi->getAlldatabeliheadertotal($datafield,$tgl,$datacari);
         if (count($omsetData) == 0) {
             $jadwal["message"] = "Data sub gol tidak ditemukan";
             $jadwal["success"] = 0;
@@ -202,6 +203,7 @@ class Allapi extends REST_Controller {
         }
            
         $jadwal["data"] = $omsetData;
+        $jadwal["totaldata"] =$omsettotal;
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 
