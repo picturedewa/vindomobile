@@ -194,7 +194,8 @@ class ApiModel extends CI_Model
     $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
-    $this->db->like($datafield,$datacari,'both');
+    // $this->db->like($datafield,$datacari,'both');
+    $this->db->where($datafield, $datacari);
     $this->db->group_by(array("po_h.nopo", "Supplier.perusahaan","po_h.tgl"));
     $query = $this->db->get();
     return $query->result();
@@ -203,11 +204,11 @@ class ApiModel extends CI_Model
    public function getAlldatabeliheadertotal($datafield,$tgl,$datacari){
     $this->db->select('sum(po_h.grandtotal) as gtotal');
     $this->db->from("{$this->poh}");
-    $this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
-    $this->db->like($datafield,$datacari,'both');
-    $this->db->group_by(array("po_h.nopo", "Supplier.perusahaan","po_h.tgl"));
+    // $this->db->like($datafield,$datacari,'both');
+    // $this->db->group_by(array("po_h.nopo"));
+    $this->db->where($datafield, $datacari);
     $query = $this->db->get();
     return $query->result();
    }
