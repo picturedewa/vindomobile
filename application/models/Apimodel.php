@@ -237,4 +237,5 @@ class ApiModel extends CI_Model
     $this->db->group_by(array($dataqr));
     $query = $this->db->get();
     return $query->result();
+   }
 }
