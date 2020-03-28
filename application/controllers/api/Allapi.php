@@ -241,4 +241,24 @@ class Allapi extends REST_Controller {
         $jadwal["data"] = $omsetData;
         $this->response($jadwal, REST_Controller::HTTP_OK);
     }
+
+    public function getpenjualanheader_post(){
+        $datafield = $this->post("datafield");
+        $tgl=$this->post("tgl");
+        $datacari = $this->post("datacari");
+        // $bln=$this->post("bulan");
+        $omsetData = $this->Mallapi->getAlldatajualheader($datafield,$tgl,$datacari);
+        $omsettotal= $this->Mallapi->getAlldatajualheadertotal($datafield,$tgl,$datacari);
+        if (count($omsetData) == 0) {
+            $jadwal["message"] = "Data sub gol tidak ditemukan";
+            $jadwal["success"] = 0;
+        }else{
+            $jadwal["success"] = 1;
+            $jadwal["message"] = "success show list all Data";
+        }
+           
+        $jadwal["data"] = $omsetData;
+        $jadwal["totaldata"] =$omsettotal;
+        $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
 }

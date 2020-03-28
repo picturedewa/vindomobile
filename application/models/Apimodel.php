@@ -243,4 +243,32 @@ class ApiModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
    }
+
+   public function getAlldatajualheader($datafield,$tgl,$datacari){
+    $this->db->select('so_h.noso,so_h.grandtotal,so_h.sales as perusahaan,so_h.tgl');
+    $this->db->from("{$this->soh}");
+    $this->db->join("{$this->sod}", 'so_h.noso = so_d.noso');
+    $this->db->where('so_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+      // $this->db->like($datafield,$datacari,'both');
+    if($datafield){
+      $this->db->where($datafield, $datacari);
+    }
+    $this->db->group_by(array("so_h.noso","so_h.tgl"));
+    $query = $this->db->get();
+    return $query->result();
+   }
+
+   public function getAlldatajualheadertotal($datafield,$tgl,$datacari){
+    $this->db->select('sum(so_h.grandtotal) as gtotal');
+    $this->db->from("{$this->soh}");
+    $this->db->where('so_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
+    // $this->db->like($datafield,$datacari,'both');
+    // $this->db->group_by(array("po_h.nopo"));
+    if($datafield){
+      $this->db->where($datafield, $datacari);
+    }
+    $query = $this->db->get();
+    return $query->result();
+   }
+
 }
