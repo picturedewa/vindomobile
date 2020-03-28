@@ -195,6 +195,7 @@ class ApiModel extends CI_Model
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     $this->db->like($datafield,$datacari,'both');
+    $this->db->group_by(array("nopo", "perusahaan","tgl"));
     $query = $this->db->get();
     return $query->result();
    }
@@ -206,6 +207,7 @@ class ApiModel extends CI_Model
     $this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
     $this->db->where('po_h.tgl BETWEEN "'. date('Y-m-01', strtotime($tgl)). '" and "'. date('Y-m-t', strtotime($tgl)).'"');
     $this->db->like($datafield,$datacari,'both');
+    $this->db->group_by(array("nopo", "perusahaan","tgl"));
     $query = $this->db->get();
     return $query->result();
    }
