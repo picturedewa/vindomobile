@@ -309,7 +309,7 @@ class ApiModel extends CI_Model
    public function getAlldatarugilabadetail($datapo){
     // $first_day_this_month = date('m-01-Y',$tgl); // hard-coded '01' for first day
     // $last_day_this_month  = date('m-t-Y',$tgl);
-    $this->db->select('so_d.kodebrg,so_d.namabrg,so_d.qty,so_d.unit,so_d.price,so_d.total,so_d.hpp');
+    $this->db->select('so_d.kodebrg,so_d.namabrg,so_d.qty,so_d.unit,so_d.price,so_d.total,total-(hpp*qty) as hpp');
     $this->db->from("{$this->sod}");
     //$this->db->join("{$this->pod}", 'po_h.nopo = po_d.nopo');
     //$this->db->join("{$this->spl}", 'po_h.spl = Supplier.kodecst');
