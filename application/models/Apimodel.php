@@ -31,10 +31,13 @@ class ApiModel extends CI_Model
         $bulan = date('m');
         $tahun = date('Y');
       }
+      $date = new DateTime("now");
+      $curr_date = $date->format('Y-m-d ');
     $this->db->select('A.noso,A.tgl,A.grandtotal,A.ttlhpp,(grandtotal - ttlhpp) AS rl');
     $this->db->from("{$this->soh} A");
-    $this->db->where('YEAR(A.tgl)', $tahun);
-    $this->db->where('MONTH(A.tgl)', $bulan);
+    // $this->db->where('YEAR(A.tgl)', $tahun);
+    // $this->db->where('MONTH(A.tgl)', $bulan);
+    $this->db->where('A.tgl',$curr_date);
     $query = $this->db->get();
     return $query->result();
   }
@@ -48,10 +51,13 @@ class ApiModel extends CI_Model
       $bulan = date('m');
       $tahun = date('Y');
     }
+    $date = new DateTime("now");
+    $curr_date = $date->format('Y-m-d ');
     $this->db->select('sum(grandtotal) as ttlomset');
     $this->db->from("{$this->soh} A");
-    $this->db->where('YEAR(A.tgl)', $tahun);
-    $this->db->where('MONTH(A.tgl)', $bulan);
+    // $this->db->where('YEAR(A.tgl)', $tahun);
+    // $this->db->where('MONTH(A.tgl)', $bulan);
+    $this->db->where('A.tgl',$curr_date);
     $query = $this->db->get();
     return $query->result();
   }
